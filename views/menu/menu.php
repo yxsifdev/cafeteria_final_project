@@ -19,10 +19,11 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-<header>
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" id="shop-name">Dolce Vita</a>
+                <img width="100px" src="../../images/dolcevita-2.jpeg" alt="">
+                <!-- <a class="navbar-brand" id="shop-name">Dolce Vita</a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -32,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
                             <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="../../index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                        <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="../menu/menu.php">Menú</a>
+                            <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="../menu/menu.php">Menú</a>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -63,7 +64,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="bebidas-card">
@@ -71,7 +72,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="bebidas-card">
@@ -79,7 +80,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="bebidas-card">
@@ -87,7 +88,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="bebidas-card">
@@ -95,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="bebidas-card">
@@ -103,7 +104,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="bebidas-content">
                 <h1>Capuccino</h1>
                 <p>s/15.00</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
     </section>
@@ -119,7 +120,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="alimentos-card">
@@ -127,7 +128,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="alimentos-card">
@@ -135,7 +136,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="alimentos-card">
@@ -143,7 +144,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="alimentos-card">
@@ -151,7 +152,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
         <div class="alimentos-card">
@@ -159,19 +160,19 @@ if (isset($_SESSION['user_id'])) {
             <div class="alimentos-content">
                 <h1>Postres</h1>
                 <p>s/23.40</p>
-                <a href="">Añadir</a>
+                <a href="../../views/user/login.php">Añadir</a>
             </div>
         </div>
     </section>
 
-
-    <!-- ----------------------------- -->
-
-
+    <!--  -->
+    <br>
+    <hr>
+    <!--  -->
 
     <footer>
         <div class="name-shop">
-            <h1>Dolce Vita</h1>
+            <img width="200px" src="../../images/dolcevita-2.jpeg" alt="">
             <div class="redes-shop">
                 <a href=""><i class="fi fi-brands-facebook"></i></a>
                 <a href=""><i class="fi fi-brands-instagram"></i></a>
@@ -180,7 +181,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="menu-options">
             <ul>
                 <h5>Tienda</h3>
-                <li><a href="../user/home.php">Sobre Nosotros</a></li>
+                    <li><a href="../user/home.php">Sobre Nosotros</a></li>
                     <li><a href="shop.php">Menú</a></li>
                     <li><a href="">Términos y condiciones</a></li>
             </ul>
@@ -335,7 +336,7 @@ if (isset($_SESSION['user_id'])) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #1f1f1f;
+        background-color: #121212;
         margin-top: 30px;
         align-items: center;
         /* gap: 35rem; */
@@ -381,7 +382,7 @@ if (isset($_SESSION['user_id'])) {
         text-decoration: none;
         color: #fff;
     }
-    
+
     footer h5 {
         color: #916b5e;
     }

@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" style="color-scheme: dark;">
 
 <head>
     <meta charset="UTF-8">
@@ -24,25 +24,26 @@ if (!isset($_SESSION['user_id'])) {
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" id="shop-name">Dolce Vita</a>
+                <img width="100px" src="../../images/dolcevita-2.jpeg" alt="">
+                <!-- <a class="navbar-brand" id="shop-name">Dolce Vita</a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a style="color: black; font-weight: 500" class="nav-link active" aria-current="page" href="../user/home.php">Inicio</a>
+                            <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="../user/home.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: black; font-weight: 500" class="nav-link active" aria-current="page" href="shop.php">Menú</a>
+                            <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="shop.php">Menú</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a style="color: black; font-weight: 500" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a style="color: #fff; font-weight: 500" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Otros
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul style="background-color: #121212;" class="dropdown-menu">
                                 <!-- <li><a class="dropdown-item" href="../menu/menu-list.php">Perfil</a></li> -->
-                                <li><a class="dropdown-item" href="carrito.php">Carrito de compras</a></li>
+                                <li><a style="color: #fff;" class="dropdown-item" href="carrito.php">Carrito de compras</a></li>
                                 <!-- <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -70,20 +71,20 @@ if (!isset($_SESSION['user_id'])) {
                             }
                             ?>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li class="user-sesion"><a class="dropdown-item">
+                        <ul style="background-color: #121212;" class="dropdown-menu dropdown-menu-end">
+                            <li class="user-sesion"><a style="color: #fff" class="dropdown-item">
                                     <?php
                                     echo $_SESSION['user_name'];
                                     ?>
                                 </a></li>
                             <hr>
-                            <li class="perfil-sesion"><a class="dropdown-item" href="#">
+                            <li class="perfil-sesion"><a style="color: #fff" class="dropdown-item" href="#">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                     </svg> Perfil
                                 </a></li>
-                            <li class="cerrar-sesion"><a class="dropdown-item" href="../user/logout.php">
+                            <li class="cerrar-sesion"><a style="color: #fff" class="dropdown-item" href="../user/logout.php">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
                                         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
@@ -103,7 +104,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
     <br>
-    <h1 style="text-align: center;">Bebidas</h1>
+    <h1 style="text-align: center; color: #916b5e;">Bebidas</h1>
     <hr>
 
     <section class="bebidas-shop-list">
@@ -143,7 +144,7 @@ if (!isset($_SESSION['user_id'])) {
 
     <br>
     <br>
-    <h1 style="text-align: center;">Alimentos</h1>
+    <h1 style="text-align: center; color: #916b5e;">Alimentos</h1>
     <hr>
 
     <section class="alimentos-shop-list">
@@ -198,13 +199,16 @@ if (!isset($_SESSION['user_id'])) {
     </section>
 
 
-    <!-- ----------------------------- -->
+    <!--  -->
+    <br>
+    <hr>
+    <!--  -->
 
 
 
     <footer>
         <div class="name-shop">
-            <h1>Dolce Vita</h1>
+            <img width="200px" src="../../images/dolcevita-3.jpeg" alt="">
             <div class="redes-shop">
                 <a href=""><i class="fi fi-brands-facebook"></i></a>
                 <a href=""><i class="fi fi-brands-instagram"></i></a>
@@ -212,10 +216,10 @@ if (!isset($_SESSION['user_id'])) {
         </div>
         <div class="menu-options">
             <ul>
-                <h5>Tienda</h3>
-                <li><a href="">Sobre Nosotros</a></li>
-                    <li><a href="">Menú</a></li>
-                    <li><a href="">Términos y condiciones</a></li>
+                <h5 style="color: #916b5e;">Tienda</h3>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="shop.php">Menú</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
             </ul>
         </div>
     </footer>
@@ -240,8 +244,14 @@ if (!isset($_SESSION['user_id'])) {
         padding-right: 10px;
     }
 
+    .nav-item .dropdown-menu a:hover {
+        background-color: transparent;
+    }
+
     body {
         font-family: 'Poppins', sans-serif;
+        background-color: #121212;
+        color: #fff;
     }
 
     /* header-start */
@@ -312,7 +322,7 @@ if (!isset($_SESSION['user_id'])) {
     .bebidas-card .bebidas-content h1 {
         font-size: 25px;
         font-weight: 600;
-        color: #000;
+        color: #fff;
     }
 
     .bebidas-card .bebidas-content a {
@@ -321,6 +331,10 @@ if (!isset($_SESSION['user_id'])) {
         border-radius: 5px;
         text-decoration: none;
         color: #fff;
+    }
+
+    .bebidas-card .bebidas-content p {
+        color: #a1a1aa;
     }
 
     /*  */
@@ -348,7 +362,7 @@ if (!isset($_SESSION['user_id'])) {
     .alimentos-card .alimentos-content h1 {
         font-size: 25px;
         font-weight: 600;
-        color: #000;
+        color: #fff;
     }
 
     .alimentos-card .alimentos-content a {
@@ -359,13 +373,17 @@ if (!isset($_SESSION['user_id'])) {
         color: #fff;
     }
 
+    .alimentos-card .alimentos-content p {
+        color: #a1a1aa;
+    }
+
     /* ---------------- */
 
     footer {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #e6e6e6b3;
+        background-color: #121212;
         margin-top: 30px;
         align-items: center;
         /* gap: 35rem; */
@@ -409,7 +427,7 @@ if (!isset($_SESSION['user_id'])) {
 
     footer .menu-options a {
         text-decoration: none;
-        color: #111111;
+        color: #fff;
     }
 
     footer .menu-options a:hover {

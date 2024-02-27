@@ -29,6 +29,8 @@
                 </div>
                 <div class="btn-submit-login">
                     <button type="submit">Continuar</button>
+                    <br>
+                    <a href="register.php" style="color: #fff; text-decoration: none; background-color: #916b5e; font-size: 15px; font-family: sans-serif; padding: 10px; border-radius: 3px">Registrarse</a>
                 </div>
             </form>
             <div class="other-forms">

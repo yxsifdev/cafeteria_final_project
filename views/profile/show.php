@@ -1,5 +1,4 @@
 <?php
-require_once("c://xampp/htdocs/cafeteria/views/head/head.php");
 
 session_start();
 
@@ -10,12 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cafeteria";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+include("../../config/connect.php");
 
 $userId = $_SESSION['user_id'];
 // Consulta la información del usuario
@@ -30,222 +24,266 @@ if ($result->num_rows > 0) {
     // Muestra la información en la página
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dolce Vita - <?php
-                        $userName = $_SESSION['user_name'];
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dolce Vita - <?php
+                            $userName = $_SESSION['user_name'];
 
-                        if (strlen($userName) > 20) {
-                            $truncatedName = substr($userName, 0, 20) . '...';
-                            echo $truncatedName;
-                        } else {
-                            echo $userName;
-                        }
-                        ?>
-    </title>
-    <link rel="stylesheet" href="profile.css">
-</head>
+                            if (strlen($userName) > 20) {
+                                $truncatedName = substr($userName, 0, 20) . '...';
+                                echo $truncatedName;
+                            } else {
+                                echo $userName;
+                            }
+                            ?>
+        </title>
+        <link rel="stylesheet" href="profile.css">
+    </head>
 
-<body>
+    <body>
 
-<section class="box-profile">
-        <div class="perfil-header">
-            <img style="border-radius: 100%" width="150px" height="150px" src="../../images/icons/usernofound.jpg" alt="">
-            <div class="header-content">
-                <h2><?php echo $row['nombre'] . ' ' . $row['apellido']; ?></h2>
-                <p>ID: <?php echo $row['id']; ?></p>
+        <section class="box-profile">
+            <div class="profile-primary-card">
+                <div class="primary-banner-img">
+                    <img src="../../images/bg/bg-profiles-3.jpg" alt="">
+                        <!-- banner de perfil -->
+                </div>
+                <div class="primary-content-card">
+                    <div class="primary-card-start">
+                        <img src="../../images/icons/usernofound.jpg" alt="">
+                        <!-- imagen de perfil del usaurio -->
+                        <div class="primary-card-name">
+                            <h2><?php echo $row['nombre'] . ' ' . $row['apellido']; ?></h2>
+                            <p>ID: <?php echo $row['id']; ?></p>
+                        </div>
+                    </div>
+                    <div class="primary-card-end">
+                        <div class="card-end-options">
+                            <a class="primary-edit-profile" href="#">Editar perfil</a>
+                            <a class="primary-home-profile" href="#">Volver al inicio</a>
+                            <a class="primary-logout-profile" href="#">Cerrar sesión</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="info-user-profile">
-            <div class="primary-data">
-                <h4>Nombre</h4>
-                <p><?php echo $row['nombre']; ?></p>
-                <!--  -->
-                <h4>Correo electrónico</h4>
-                <p><?php echo $row['email']; ?></p>
-                <!--  -->
-                <h4>DNI</h4>
-                <p><?php echo $row['dni']; ?></p>
+            <!--  -->
+            <div class="profile-secondary-card">
+                <div class="secondary-card-content">
+                    <div class="secondary-card-start">
+                        <div class="secondary-card-section">
+                            <h3>Nombre</h3>
+                            <p><?php echo $row['nombre']; ?></p>
+                        </div>
+                        <div class="secondary-card-section">
+                            <h3>Apellido</h3>
+                            <p><?php echo $row['apellido']; ?></p>
+                        </div>
+                        <div class="secondary-card-section">
+                            <h3>Correo electrónico</h3>
+                            <p><?php echo $row['email']; ?></p>
+                        </div>
+                        <div class="secondary-card-section">
+                            <h3>Dni</h3>
+                            <p><?php echo $row['dni']; ?></p>
+                        </div>
+                    </div>
+                    <div class="secondary-card-end">
+                        <div class="secondary-card-section">
+                            <h3>Número de teléfono</h3>
+                            <p><?php echo $row['telefono']; ?></p>
+                        </div>
+                        <div class="secondary-card-section">
+                            <h3>Fecha de nacimiento</h3>
+                            <p><?php echo $row['fechaNa']; ?></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="secondary-data">
-                <h4>Apellido</h4>
-                <p><?php echo $row['apellido']; ?></p>
-                <!--  -->
-                <h4>Número de teléfono</h4>
-                <p><?php echo $row['telefono']; ?></p>
-                <!--  -->
-                <h4>Fecha de nacimiento</h4>
-                <p><?php echo $row['fechaNa']; ?></p>
-            </div>
-        </div>
-        <div class="btn-logout">
-            <a href="../user/logout.php">Cerrar sesión</a>
-        </div>
-        <br>
-        <a class="back-home" href="../../index.php">Volver al inicio</a>
-    </section>
+        </section>
     <?php
 } else {
     // Si no se encuentra el usuario, muestra un mensaje de error
     echo "Error: Usuario no encontrado";
 }
-?>
-</body>
+    ?>
+    </body>
 
-</html>
+    </html>
 
-<style>
-    @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-straight/css/uicons-solid-straight.css');
-    @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-bold-rounded/css/uicons-bold-rounded.css');
-    @import url('https://cdn-uicons.flaticon.com/2.1.0/uicons-solid-rounded/css/uicons-solid-rounded.css');
-    /*  */
-    @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900display=swap');
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-image: url(../../images/bg/coffee-bg3.jpg);
-        background-size: cover;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
 
-    /*  */
+        .box-profile {
+            display: flex;
+            /* align-items: center; */
+            gap: 30px;
+            justify-content: center;
+            padding: 20px;
+        }
 
-    .box-profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        padding: 30px 0;
-        flex-wrap: wrap;
-    }
 
-    .box-profile .perfil-header {
-        display: flex;
-        gap: 30px;
-        width: 1000px;
-        justify-content: left;
-        flex-wrap: wrap;
-        padding: 10px;
-        border-radius: 100px;
-        box-shadow: #000000 0 0 10px 1px;
-        /* background-color: #916b5e; */
-        /* background-image: url(coffee-bg.jpg); */
-        /* background-size: cover; */
-        backdrop-filter: blur(50px);
-        align-items: center;
-    }
+        /* primary-card */
+        .profile-primary-card {
+            border-radius: 5px;
+            background-color: #1f1f1f;
+            width: 400px;
+        }
 
-    .perfil-header h2 {
-        font-weight: 600;
-        color: #fff;
-    }
+        .profile-primary-card .primary-banner-img img {
+            width: 100%;
+            height: 120px;
+            border-radius: 5px 5px 0px 0px;
+        }
 
-    .perfil-header p {
-        font-weight: 500;
-        color: #c0c0c0;
-    }
+        .primary-content-card {
+            display: flex;
+            gap: 30px;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-    .info-user-profile {
-        display: flex;
-        gap: 20vh;
-        padding: 50px 0;
-    }
+        .primary-content-card .primary-card-start {
+            display: flex;
+            /* gap: 20px; */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .primary-data {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 30px 50px;
-        backdrop-filter: blur(50px);
-        border-radius: 10px;
-    }
+        .primary-card-start .primary-card-name {
+            text-align: center;
+        }
 
-    .primary-data h4 {
-        color: #fff;
-    }
+        .primary-card-start .primary-card-name p {
+            color: #a1a1aa;
+        }
 
-    .primary-data p {
-        outline: 1px solid #E2E4E9;
-        padding: 5px 100px 5px 10px;
-        color: #fff;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        text-align: left;
-    }
+        .primary-content-card .primary-card-start img {
+            /* margin-left: -10px; */
+            width: 130px;
+            margin-top: -100px;
+            background-color: #1f1f1f;
+            padding: 10px;
+            height: 130px;
+            border-radius: 100%;
+        }
 
-    /*  */
+        .primary-content-card .primary-card-end .card-end-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
 
-    .secondary-data {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        padding: 30px 50px;
-        backdrop-filter: blur(50px);
-        border-radius: 10px;
-    }
+        .card-end-options .primary-edit-profile {
+            outline: 1px solid #4d4d4d;
+            color: #a1a1aa;
+            padding: 3px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: .2s;
+        }
 
-    .secondary-data h4 {
-        color: #fff;
-    }
+        .card-end-options .primary-home-profile {
+            outline: 1px solid #4d4d4d;
+            color: #a1a1aa;
+            padding: 3px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: .2s;
+        }
 
-    .secondary-data p {
-        outline: 1px solid #E2E4E9;
-        padding: 5px 100px 5px 10px;
-        color: #fff;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        text-align: left;
-    }
+        .card-end-options .primary-logout-profile {
+            outline: 1px solid #4d4d4d;
+            color: #a1a1aa;
+            padding: 3px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: .2s;
+        }
 
-    /*  */
-    .btn-logout {
-        background-color: #505050;
-        padding: 8px 20px;
-        border-radius: 50px;
-    }
+        .card-end-options .primary-edit-profile:hover {
+            outline-color: #5865f2;
+            color: #fff;
+        }
 
-    .btn-logout a {
-        color: #fff;
-        text-decoration: none;
-    }
+        .card-end-options .primary-home-profile:hover {
+            outline-color: #57F287;
+            color: #fff;
+        }
 
-    .btn-logout:hover {
-        background-color: red;
-    }
+        .card-end-options .primary-logout-profile:hover {
+            outline-color: #ED4245;
+            color: #fff;
+        }
 
-    .back-home {
-        background-color: #505050;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 50px;
-        padding: 8px 20px;
-    }
+        /* secondary-card */
 
-    .back-home:hover {
-        background-color: green;
-        color: #fff;
-    }
+        .profile-secondary-card {
+            background-color: #1f1f1f;
+            border-radius: 5px;
+        }
 
-    /*  */
+        .secondary-card-content {
+            display: flex;
+            padding: 30px;
+            gap: 5rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
+        .secondary-card-start {
+            display: flex;
+            height: 100%;
+            gap: 30px;
+            border-radius: 5px;
+            flex-direction: column;
+        }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: #222222;
-    }
-</style>
+        .secondary-card-end {
+            display: flex;
+            gap: 30px;
+            height: 100%;
+            border-radius: 5px;
+            flex-direction: column;
+        }
 
-<?php
-require_once("c://xampp/htdocs/cafeteria/views/head/footer.php");
-?>
+        .secondary-card-section p {
+            outline: 1px solid #4d4d4d;
+            color: #a1a1aa;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /*  */
+
+        @media (max-width: 767px) {
+            .box-profile {
+                flex-wrap: wrap;
+            }
+
+            .profile-primary-card {
+                width: 500px
+            }
+
+            .secondary-card-content {
+                gap: 30px;
+            }
+        }
+    </style>

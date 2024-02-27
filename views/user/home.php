@@ -14,24 +14,10 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // echo "¡Bienvenido " . $_SESSION['user_name']."!";
-
-// // Botón de perfil y menú
-// echo '<div>';
-// echo '<button onclick="mostrarMenu()">Perfil</button>';
-// echo '<div id="menuPerfil" style="display: none;">';
-// echo '<a href="logout.php">Cerrar Sesión</a>';
-// echo '</div>';
-// echo '</div>';
-// echo '<script>';
-// echo 'function mostrarMenu() {';
-// echo 'var menu = document.getElementById("menuPerfil");';
-// echo 'menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "block" : "none";';
-// echo '}';
-// echo '</script>';
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme: dark;">
 
 <head>
     <meta charset="UTF-8">
@@ -51,25 +37,26 @@ if (!isset($_SESSION['user_id'])) {
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" id="shop-name">Dolce Vita</a>
+            <img width="100px" src="../../images/dolcevita-2.jpeg" alt="">
+                <!-- <a class="navbar-brand" id="shop-name">Dolce Vita</a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a style="color: black; font-weight: 500" class="nav-link active" aria-current="page" href="home.php">Inicio</a>
+                            <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="home.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a style="color: black; font-weight: 500" class="nav-link active" aria-current="page" href="../menu/shop.php">Menú</a>
+                            <a style="color: #fff; font-weight: 500" class="nav-link active" aria-current="page" href="../menu/shop.php">Menú</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a style="color: black; font-weight: 500" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a style="color: #fff; font-weight: 500" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Otros
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul style="background-color: #121212;" class="dropdown-menu">
                                 <!-- <li><a class="dropdown-item" href="../menu/shop.php">Perfil</a></li> -->
-                                <li><a class="dropdown-item" href="../menu/carrito.php">Carrito de compras</a></li>
+                                <li><a style="color: #fff" class="dropdown-item" href="../menu/carrito.php">Carrito de compras</a></li>
                                 <!-- <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -97,15 +84,15 @@ if (!isset($_SESSION['user_id'])) {
                             }
                             ?>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li class="user-sesion"><a class="dropdown-item">
+                        <ul style="background-color: #121212;" class="dropdown-menu dropdown-menu-end">
+                            <li class="user-sesion"><a style="color: #fff;" class="dropdown-item">
                                     <?php
                                     echo $_SESSION['user_name'];
                                     ?>
                                 </a></li>
                             <hr>
                             <li class="perfil-sesion">
-                                <a class="dropdown-item" href="../profile/show.php?id=<?php
+                                <a style="color: #fff;" class="dropdown-item" href="../profile/show.php?id=<?php
                                                                                         echo $_SESSION['user_id'];
                                                                                         ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -116,7 +103,7 @@ if (!isset($_SESSION['user_id'])) {
                                                     ?>
                                 </a>
                             </li>
-                            <li class="cerrar-sesion"><a class="dropdown-item" href="logout.php">
+                            <li class="cerrar-sesion"><a style="color: #fff;" class="dropdown-item" href="logout.php">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
                                         <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z" />
@@ -133,13 +120,13 @@ if (!isset($_SESSION['user_id'])) {
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img height="400px" src="../../images/banner_1.jpg" class="d-block w-100" alt="...">
+                <img height="400px" src="../../images/bg/bg-1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img height="400px" src="../../images/banner_2.jpg" class="d-block w-100" alt="...">
+                <img height="400px" src="../../images/bg/bg-3.jpeg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img height="400px" src="../../images/coffee-banner-3.jpg" class="d-block w-100" alt="...">
+                <img height="400px" src="../../images/bg/bg-4.jpeg" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -157,13 +144,13 @@ if (!isset($_SESSION['user_id'])) {
     <!--  -->
     <aside style="text-align: center; margin-top: 20px" class="sobre-nosotros">
         <h2 style="color: #916b5e; font-family: Marshena; font-size: 70px">Sobre nosotros</h2>
-        <p>
+        <p style="color: #a1a1aa;">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Temporibus aspernatur quos nulla ipsam nemo in! Nihil,
             adipisci necessitatibus corporis obcaecati delectus doloremque tempore,
             magni explicabo vero vitae consequuntur veniam tenetur!
         </p>
-        <p>
+        <p style="color: #a1a1aa;">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Temporibus aspernatur quos nulla ipsam nemo in! Nihil,
             adipisci necessitatibus corporis obcaecati delectus doloremque tempore,
@@ -171,11 +158,14 @@ if (!isset($_SESSION['user_id'])) {
         </p>
     </aside>
     <!--  -->
+    <br>
+    <hr>
     <!--  -->
 
     <footer>
         <div class="name-shop">
-            <h1>Dolce Vita</h1>
+        <img width="200px" src="../../images/dolcevita-3.jpeg" alt="">
+            <!-- <h1>Dolce Vita</h1> -->
             <div class="redes-shop">
                 <a href=""><i class="fi fi-brands-facebook"></i></a>
                 <a href=""><i class="fi fi-brands-instagram"></i></a>
@@ -184,9 +174,9 @@ if (!isset($_SESSION['user_id'])) {
         <div class="menu-options">
             <ul>
                 <h5>Tienda</h3>
-                    <li><a href="">Sobre Nosotros</a></li>
-                    <li><a href="">Menú</a></li>
-                    <li><a href="">Términos y condiciones</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="../menu/shop.php">Menú</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
             </ul>
             <!-- <ul>
                 <h5>Atención</h3>
@@ -237,6 +227,8 @@ if (!isset($_SESSION['user_id'])) {
 
     body {
         font-family: 'Poppins', sans-serif;
+        background-color: #121212;
+        color: #fff;
     }
 
     /* header-start */
@@ -247,6 +239,10 @@ if (!isset($_SESSION['user_id'])) {
 
     .carousel-item img {
         border-radius: 10px;
+    }
+
+    .nav-item .dropdown-menu a:hover {
+        background-color: transparent;
     }
 
     /* Carousel-end */
@@ -283,7 +279,7 @@ if (!isset($_SESSION['user_id'])) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #e6e6e6b3;
+        background-color: #121212;
         margin-top: 30px;
         align-items: center;
         /* gap: 35rem; */
@@ -336,7 +332,7 @@ if (!isset($_SESSION['user_id'])) {
 
     footer .menu-options a {
         text-decoration: none;
-        color: #111111;
+        color: #fff;
     }
 
     footer .menu-options li {

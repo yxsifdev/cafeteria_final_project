@@ -28,7 +28,7 @@ if (isset($_SESSION['user_id'])) {
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" id="shop-name">Dolce Vita</a>
+            <img width="100px" src="./images/dolcevita-2.jpeg" alt="">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -96,11 +96,13 @@ if (isset($_SESSION['user_id'])) {
         </p>
     </aside>
     <!--  -->
+    <br>
+    <hr>
     <!--  -->
 
     <footer>
         <div class="name-shop">
-            <h1>Dolce Vita</h1>
+        <img width="200px" src="images/dolcevita-2.jpeg" alt="">
             <div class="redes-shop">
                 <a href=""><i class="fi fi-brands-facebook"></i></a>
                 <a href=""><i class="fi fi-brands-instagram"></i></a>
@@ -209,7 +211,7 @@ if (isset($_SESSION['user_id'])) {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        background-color: #1f1f1f;
+        background-color: #121212;
         margin-top: 30px;
         align-items: center;
         /* gap: 35rem; */

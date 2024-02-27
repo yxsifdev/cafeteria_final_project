@@ -1,5 +1,5 @@
 <?php
-include '../../db/connect.php'; // Incluye tu archivo de conexión
+include '../../config/connect.php'; // Incluye tu archivo de conexión
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
