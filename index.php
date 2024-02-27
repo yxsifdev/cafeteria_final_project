@@ -9,7 +9,7 @@ session_start();
 // Verificar si el usuario ha iniciado sesión
 if (isset($_SESSION['user_id'])) {
     // Si el usuario no ha iniciado sesión, redirigir a index.php
-    header("Location: ../error404.php");
+    header("Location: views/user/home.php");
     exit();
 }
 ?>

@@ -1,26 +1,30 @@
 <?php
 
-class ProductModel
+class productModel
 {
-    private $conn;
+    private $connection;
 
 
-    public function __construct($conn)
+    public function __construct()
     {
-        $this->conn = $conn;
+        require_once("../../config/connect.php");
+        $con = new db();
+        $this->connection = $con->connection();
     }
 
-    public function getProducts()
+        public function getProducts()
     {
         // Consulta SQL para obtener los productos desde la base de datos
         $sql = "SELECT id, nombre, descripcion, precio FROM productos";
-        $result = $this->conn->query($sql);
+        $result = $this->connection->query($sql);
 
-        // Verificar si hay resultados
-        if ($result->num_rows > 0) {
-            return $result->fetch_all(MYSQLI_ASSOC);
+        if ($result instanceof PDOStatement) {
+            return $result->fetchAll(PDO::FETCH_ASSOC);
         } else {
+            // Manejar el caso en el que $result no es un objeto PDOStatement válido
+            // Esto puede incluir imprimir mensajes de error, registrar el error, o realizar alguna otra acción de manejo de errores
             return [];
         }
     }
+
 }

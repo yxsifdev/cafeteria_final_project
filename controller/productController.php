@@ -1,19 +1,16 @@
 <?php
-
-require_once('../../models/productModel.php');
-
-class ProductController
+class productController
 {
-    private $productModel;
+    private $model;
 
-    public function __construct($conn)
+    public function __construct()
     {
-        $this->productModel = new ProductModel($conn);
+        require_once('../../models/productModel.php');
+        $this->model = new productModel();
     }
 
     public function getProducts()
     {
-        return $this->productModel->getProducts();
+        return $this->model->getProducts();
     }
-
 }

@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 include("../../config/connect.php");
 
-$productController = new ProductController($conn);
+$productController = new productController();
 $products = $productController->getProducts();
 ?>
 

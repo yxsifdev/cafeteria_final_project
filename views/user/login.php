@@ -17,15 +17,15 @@
     <section>
         <!-- Formulario de inicio de sesión -->
         <div class="card-form-login">
-            <form action="login_process.php" method="post">
+            <form action="../../actions/user/login_process.php" method="post">
                 <div class="login-to-continue">
                     <h1><i class="fi fi-br-portal-enter"></i> Dolce Vita</h1>
                     <p>Inicia sesión para continuar</p>
                 </div>
                 <div class="inputs-login-form">
-                    <input type="text" name="nombre" placeholder="Nombre">
-                    <input type="email" name="email" placeholder="Introduce tu correo electrónico">
-                    <input type="password" name="password" placeholder="Introduce la contraseña">
+                    <input required type="text" name="nombre" placeholder="Nombre">
+                    <input required type="email" name="email" placeholder="Introduce tu correo electrónico">
+                    <input required type="password" name="password" placeholder="Introduce la contraseña">
                 </div>
                 <div class="btn-submit-login">
                     <button type="submit">Continuar</button>

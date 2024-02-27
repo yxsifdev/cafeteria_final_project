@@ -23,7 +23,7 @@ echo (empty($_GET['id']))
     <section>
         <!-- Formulario de registro -->
         <div class="card-form-register">
-            <form action="register_process.php" method="post">
+            <form action="../../actions/user/register_process.php" method="post">
                 <div class="register-to-continue">
                     <h1><i class="fi fi-ss-user-add"></i> Dolce Vita</h1>
                     <p>Regístrate para continuar</p>
