@@ -25,7 +25,7 @@ create table if not exists `menu` (
 INSERT INTO `menu` (`nombre`, `dsc`, `precio`, `categoria`, `tipo`, `imagen`) VALUES
 ('Café Americano', 'Delicioso café americano recién hecho.', 2.50, 'Café', 'bebidas', 'https://imgur.com/g6tsdZZ.png'),
 ('Café Latte', 'Café suave con leche caliente.', 3.00, 'Café', 'bebidas', 'https://imgur.com/g6tsdZZ.png'),
-('Sandwich de Pollo', 'Sabroso sándwich de pollo con lechuga y tomate.', 5.00, 'Sandwiches', 'bebidas', 'https://imgur.com/g6tsdZZ.png'),
+('Café', 'Un delicioso café', 1.50, 'Sandwiches', 'bebidas', 'https://imgur.com/g6tsdZZ.png'),
 ('Té Verde', 'Té verde caliente y refrescante.', 2.00, 'Té', 'bebidas', 'https://imgur.com/g6tsdZZ.png');
 -- comidas
 INSERT INTO `menu` (`nombre`, `dsc`, `precio`, `categoria`, `tipo`, `imagen`) VALUES
