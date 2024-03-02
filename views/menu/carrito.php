@@ -13,7 +13,9 @@ if (!isset($_SESSION['user_id'])) {
 include("../../config/connect.php");
 
 $productController = new productController();
-$products = $productController->getProducts();
+// $products = $productController->getProducts();
+
+$cart_products = $productController->showCart();
 ?>
 
 <!DOCTYPE html>
@@ -107,10 +109,55 @@ $products = $productController->getProducts();
         </nav>
     </header>
 
-    <h1 style="text-align: center;">Tu carrito</h1>
+    <!-- carrito.php -->
+    <!-- <?php if (!empty($cart_products)) : ?>
+        <div class="cart-items">
+            <ul>
+                <?php foreach ($cart_products as $product) : ?>
+                    <li>
+                        Producto: <?php echo $product['name']; ?> - Cantidad: <?php echo $product['quantity']; ?>
+                        <form action="../../actions/product/delCarrito.php" method="post">
+                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                            <input type="submit" value="Eliminar">
+                        </form>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php else : ?>
+        <p>El carrito está vacío</p>
+    <?php endif; ?> -->
 
+
+    <?php if (!empty($cart_products)) : ?>
+        <section class="buy-list">
+            <?php foreach ($cart_products as $product) : ?>
+                <div style="border-color: #4d4d4d;" class="card text-bg-light mb-3" style="max-width: 18rem;">
+                    <div style="color: #fff; background-color: #1f1f1f; border-color: #4d4d4d;" class="card-header">ID: <?php echo $product['id']; ?><br>Tipo: <?php echo $product['type']; ?></div>
+                    <div style="color: #fff; background-color: #1f1f1f;" class="card-body">
+                        <h5 class="card-title"><?php echo $product['name']; ?></h5>
+                        <p style="color: rgba(255, 255, 255, 0.7)" class="card-text"><?php echo $product['desc']; ?></p>
+                        <form action="../../actions/product/delCarrito.php" method="post">
+                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                            <input class="btn btn-danger" type="submit" value="Eliminar">
+                            <a style="background-color: #ffc107; border-color: #ffc107" class="btn btn-success">Precio: s/<?php echo $product['price'] ?></a>
+                            <a style="background-color: #6c757d; border-color: #6c757d" class="btn btn-primary">Cantidad: <?php echo $product['quantity'] ?></a>
+
+                        </form>
+                    </div>
+                    <!-- Producto: <?php echo $product['name']; ?> - Cantidad: <?php echo $product['quantity']; ?> -->
+
+                </div>
+
+            <?php endforeach; ?>
+        </section>
+    <?php else : ?>
+        <div style="text-align: center;" class="alert alert-danger" role="alert">
+            Actualmente, el carrito se encuentra vacío. Dirígete al menú de compra y agrega productos al <strong>carrito</strong> de <strong>compras</strong>.
+        </div>
+    <?php endif; ?>
     <!--  -->
-    <section class="buy-list">
+    <!-- <section class="buy-list">
         <?php foreach ($products as $product) : ?>
             <div style="border-color: #4d4d4d;" class="card text-bg-light mb-3" style="max-width: 18rem;">
                 <div style="color: #fff; background-color: #1f1f1f; border-color: #4d4d4d;" class="card-header">ID: <?php echo $product['id']; ?></div>
@@ -122,18 +169,28 @@ $products = $productController->getProducts();
                 </div>
             </div>
         <?php endforeach; ?>
-    </section>
+    </section> -->
     <!--  -->
 
     <!--  -->
     <hr>
+    <?php
+    // Calcula el subtotal sumando los precios de todos los productos en el carrito
+    $subtotal = 0;
+    foreach ($cart_products as $product) {
+        $subtotal += $product['price'] * $product['quantity'];
+    }
+    ?>
     <div class="total-pago">
         <div class="price">
             <h3>Subtotal:</h3>
-            <h2>s/40.40</h2>
+            <h2>s/<?php echo number_format($subtotal, 2); ?></h2>
         </div>
-        <a href="#">Ir a pagar</a>
+        <form action="../../actions/product/pagar.php" method="post">
+            <button type="submit">Ir a pagar</button>
+        </form>
     </div>
+
     <hr>
     <!--  -->
     <br>
@@ -265,15 +322,15 @@ $products = $productController->getProducts();
         font-size: 35px;
     }
 
-    .total-pago a {
+    .total-pago button {
         background-color: #916b5e;
         color: #fff;
         font-size: 15px;
+        border: 0;
         border-radius: 50px;
         text-decoration: none;
         padding: 9px 20px;
     }
-
     /*  */
 
 

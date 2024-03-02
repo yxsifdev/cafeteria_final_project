@@ -1,14 +1,20 @@
 <?php
 require_once("c://xampp/htdocs/cafeteria/views/head/head.php");
+require_once '../../controller/productController.php';
 
 session_start();
 
-// Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['user_id'])) {
     // Si el usuario no ha iniciado sesión, redirigir a index.php
     header("Location: ../error404.php");
     exit();
 }
+
+$productModel = new productController();
+$products = $productModel->showProducts();
+// Verificar si el usuario ha iniciado sesión
+
+
 ?>
 
 <!DOCTYPE html>
@@ -79,8 +85,8 @@ if (!isset($_SESSION['user_id'])) {
                                 </a></li>
                             <hr>
                             <li class="perfil-sesion"><a style="color: #fff" class="dropdown-item" href="../profile/show.php?id=<?php
-                                                                                                            echo $_SESSION['user_id'];
-                                                                                                            ?>">
+                                                                                                                                echo $_SESSION['user_id'];
+                                                                                                                                ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
@@ -110,38 +116,30 @@ if (!isset($_SESSION['user_id'])) {
     <hr>
 
     <section class="bebidas-shop-list">
-        <div class="bebidas-card">
-            <img src="../../images/bebidas/MANJAR_BLANCO_FRAPP_V2.png" alt="">
-            <div class="bebidas-content">
-                <h1>Capuccino</h1>
-                <p>s/15.00</p>
-                <a href="">Añadir</a>
+        <?php if (!empty($products)) : ?>
+            <div class="bebidas-card">
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($product['tipo'] === 'bebidas') : ?>
+                        <div class="container-bebidas">
+                            <img src="<?php echo $product['imagen'] ?>" alt="">
+                            <div class="bebidas-content">
+                                <?php
+                                $productName = strlen($product['nombre']) > 20 ? substr($product['nombre'], 0, 10) . '..' : $product['nombre'];
+                                ?>
+                                <h1><?php echo $productName; ?></h1>
+                                <p>s/<?php echo $product['precio'] ?></p>
+                                <form action='../../actions/product/addCarrito.php' method='post'>
+                                    <input type="hidden" name="product_id" value="<?php echo $product['idM'] ?>">
+                                    <input type='submit' value='Agregar al carrito'>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
-        </div>
-        <div class="bebidas-card">
-            <img src="../../images/bebidas/MANJAR_BLANCO_FRAPP_V2.png" alt="">
-            <div class="bebidas-content">
-                <h1>Capuccino</h1>
-                <p>s/15.00</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="bebidas-card">
-            <img src="../../images/bebidas/MANJAR_BLANCO_FRAPP_V2.png" alt="">
-            <div class="bebidas-content">
-                <h1>Capuccino</h1>
-                <p>s/15.00</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="bebidas-card">
-            <img src="../../images/bebidas/MANJAR_BLANCO_FRAPP_V2.png" alt="">
-            <div class="bebidas-content">
-                <h1>Capuccino</h1>
-                <p>s/15.00</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
+        <?php else : ?>
+            <p>No hay productos disponibles.</p>
+        <?php endif; ?>
     </section>
 
     <br>
@@ -150,54 +148,30 @@ if (!isset($_SESSION['user_id'])) {
     <hr>
 
     <section class="alimentos-shop-list">
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
+        <?php if (!empty($products)) : ?>
+            <div class="alimentos-card">
+                <?php foreach ($products as $product) : ?>
+                    <?php if ($product['tipo'] === 'comida') : ?>
+                        <div class="container-alimentos">
+                            <img src="<?php echo $product['imagen'] ?>" alt="">
+                            <div class="alimentos-content">
+                                <?php
+                                $productName = strlen($product['nombre']) > 20 ? substr($product['nombre'], 0, 10) . '..' : $product['nombre'];
+                                ?>
+                                <h1><?php echo $productName; ?></h1>
+                                <p>s/<?php echo $product['precio'] ?></p>
+                                <form action='../../actions/product/addCarrito.php' method='post'>
+                                    <input type="hidden" name="product_id" value="<?php echo $product['idM'] ?>">
+                                    <input type='submit' value='Agregar al carrito'>
+                                </form>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
-        </div>
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
-        <div class="alimentos-card">
-            <img src="../../images/alimentos/PACK_COFFEE_MIXTO_V3.png" alt="">
-            <div class="alimentos-content">
-                <h1>Postres</h1>
-                <p>s/23.40</p>
-                <a href="">Añadir</a>
-            </div>
-        </div>
+        <?php else : ?>
+            <p>No hay productos disponibles.</p>
+        <?php endif; ?>
     </section>
 
 
@@ -304,15 +278,14 @@ if (!isset($_SESSION['user_id'])) {
     .bebidas-shop-list {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
         gap: 50px;
     }
 
     .bebidas-card {
         display: flex;
         align-items: center;
-        width: 500px;
-        gap: 30px;
+        flex-wrap: wrap;
+        gap: 50px;
         justify-content: center;
     }
 
@@ -321,16 +294,27 @@ if (!isset($_SESSION['user_id'])) {
         height: 200px;
     }
 
+    .container-bebidas {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        /* background-color: #1f1f1f; */
+        padding: 10px;
+        border-radius: 10px;
+
+    }
+
     .bebidas-card .bebidas-content h1 {
         font-size: 25px;
         font-weight: 600;
         color: #fff;
     }
 
-    .bebidas-card .bebidas-content a {
+    .bebidas-card .bebidas-content input {
+        border: 0;
         background-color: #916b5e;
         padding: 5px 10px;
-        border-radius: 5px;
+        border-radius: 50px;
         text-decoration: none;
         color: #fff;
     }
@@ -344,15 +328,15 @@ if (!isset($_SESSION['user_id'])) {
     .alimentos-shop-list {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
         gap: 50px;
     }
 
     .alimentos-card {
         display: flex;
         align-items: center;
-        width: 500px;
-        gap: 30px;
+        /* width: 500px; */
+        flex-wrap: wrap;
+        gap: 50px;
         justify-content: center;
     }
 
@@ -361,16 +345,27 @@ if (!isset($_SESSION['user_id'])) {
         height: 200px;
     }
 
+    .container-alimentos {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        /* background-color: #1f1f1f; */
+        padding: 10px;
+        border-radius: 10px;
+
+    }
+
     .alimentos-card .alimentos-content h1 {
         font-size: 25px;
         font-weight: 600;
         color: #fff;
     }
 
-    .alimentos-card .alimentos-content a {
+    .alimentos-card .alimentos-content input {
         background-color: #916b5e;
         padding: 5px 10px;
-        border-radius: 5px;
+        border-radius: 50px;
+        border: 0;
         text-decoration: none;
         color: #fff;
     }
